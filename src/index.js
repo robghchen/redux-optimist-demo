@@ -8,11 +8,12 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import rootReducer from './reducer';
+import getRaichu from './middleware/getRaichu'; // import middleware file
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
 	rootReducer,
-	composeEnhancers(applyMiddleware(thunk))
+	composeEnhancers(applyMiddleware(thunk, getRaichu)) // use middleware file we created
 );
 
 ReactDOM.render(
